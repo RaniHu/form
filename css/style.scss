@@ -1,0 +1,479 @@
+@charset "UTF-8";
+@import "common_mixin";
+
+body {
+  font-family: 'Microsoft YaHei';
+  //background-color: #d9d9d9;
+  background-color: #ffffff;
+}
+
+$li_height: 35px;
+//li标签高度
+$li_border_color: #ececec;
+//li标签边框色
+$li_bgcolor: #f5f5f5;
+//li标签背景色
+$li-color: #a4a4a4;
+//li标签文字颜色
+$li_font_size: 16px;
+//li标签内文字大小
+$input_style_height: $li_height*0.7;
+//input输入框高度
+$label_width: 85px;
+//label宽度
+$label_color: #333333;
+//label文字颜色
+#form {
+  width: 100%;
+  height: 100%;
+}
+
+/*表单组*/
+.Xht_inputgroup {
+  padding: 3%;
+
+  /*不同类型表单的外层盒子*/
+  li.Xht_inputgroup_li {
+    position: relative;
+    display: block;
+    height: $li_height;
+    line-height: $li_height;
+    padding: 0 2%;
+    margin: 5% auto;
+    border: 1px solid $li_border_color;
+    color: $li-color;
+    background-color: $li_bgcolor;
+    @include border-radius(3px);
+
+    /*input输入框外层盒子*/
+    .Xht_inputwrap {
+      height: $li_height;
+      line-height: $li_height;
+      text-align: center;
+      /*input框样式*/
+      .Xht_input_style {
+        height: $input_style_height;
+        padding-top: ($li_height - $input_style_height)/2;
+        font-size: $li_font_size;
+        background-color: $li_bgcolor;
+      }
+    }
+
+    /*label标签*/
+    label.Xht_label {
+      display: block;
+      width: $label_width;
+      text-align: left;
+      color: #777777;
+    }
+
+    /*占一整行的input*/
+    @at-root
+    .whole_line {
+      .Xht_inputwrap {
+        width: 100%;
+      }
+    }
+
+    /*一排有两个元素的input*/
+    @at-root
+    .two_element_inline {
+      .Xht_inputwrap {
+        float: left;
+      }
+
+      label.Xht_label {
+        float: left;
+      }
+    }
+
+    /*两排显示的input*/
+    @at-root
+    .Xht_inputgroup_li.two_line {
+      /*input外层盒子*/
+      .Xht_inputwrap {
+        height: $li_height;
+        line-height: $li_height;
+        padding: 0 1%;
+        margin: 1% 0;
+        border: 1px solid $li_border_color;
+        color: $li-color;
+        @include border-radius(3px);
+        /*input样式*/
+        .Xht_input_style {
+          width: 100%;
+          height: $input_style_height;
+          padding-top: ($li_height - $input_style_height)/2;
+          font-size: $li_font_size;
+        }
+      }
+    }
+
+    .selectbox {
+      p {
+        display: block;
+        width: auto;
+        height: $li_height;
+        line-height: $li_height;
+      }
+
+      /*展开小按钮*/
+      .control {
+        width: $li_height;
+        height: $li_height;
+        position: absolute;
+        right: 0;
+        top: 0;
+        cursor: pointer;
+        .selectBtn {
+          position: absolute;
+          top: 12px;
+          left: 12px;
+          width: 10px;
+          height: 10px;
+          border-left: 2px solid #a9a9a9;
+          border-bottom: 2px solid #a9a9a9;
+          @include transform(rotate(-45deg));
+          @include transition(0.5s);
+        }
+      }
+
+      .selectbox.open .control .selectBtn {
+        @include transform(rotate(135deg));
+        @include transition(0.5s);
+      }
+
+      /*下拉框*/
+      ul.select {
+        position: absolute;
+        top: $li_height;
+        right: 0;
+        width: 70%;
+        list-style-type: none;
+        cursor: pointer;
+        display: none;
+        z-index: 1000;
+      }
+      .box.open ul.select {
+        display: block;
+      }
+
+      ul.select li {
+        display: block;
+        //background-color: #a9a9a9;
+        line-height: 30px;
+        padding-left: 10px;
+      }
+
+      ul.select li:hover {
+        background-color: #eeeeee;
+      }
+    }
+    /*输入框和下拉框*/
+    .Xht_input_style, .selectbox {
+      width: 100%;
+    }
+  }
+  /*性别选择*/
+  #sex {
+    word-spacing: 30px;
+    .Xht_inputwrap {
+      //padding-left: 8px;
+    }
+  }
+}
+
+/*/!*输入框和搜索按钮*!/
+$search_input_height: 30px;
+//搜索框input高度
+$search_input_width: 200px;
+//搜索框input宽度
+$search_btn_width: 60px;
+//搜索按钮的宽度
+
+/!*搜索form样式*!/
+form.Xht_form_search {
+  margin: 10px auto;
+  width: $search_btn_width+$search_input_width;
+  border: 1px solid $btn_red_bgcolor;
+}
+
+/!*搜索外层盒子*!/
+.Xht_search_wrap {
+  position: relative;
+  vertical-align: middle;
+  height: $search_input_height;
+  /!*搜索框input*!/
+  input.Xht_input_search {
+    width: $search_input_width;
+    height: $search_input_height;
+  }
+  /!*搜索按钮*!/
+  .Xht_btn_search {
+    position: absolute;
+    left: $search_input_width;
+    top: 0;
+    margin: 0;
+    width: $search_btn_width;
+    height: $search_input_height;
+    background-color: $btn_red_bgcolor;
+    @include border-radius(0);
+    font-size: 14px;
+  }
+}*/
+
+/*弹出框*/
+$dialog_width: 400px;
+//弹出框宽度
+$dialog_header_height: 45px;
+//弹出框头部高度
+$dialog_content_height: 100px;
+//弹出框内容高度
+$dialog_header_height_mobile: 35px;
+//弹出框手机版头部高度
+$dialog_content_height_mobile: 100px;
+//弹出框手机版内容高度
+$dialog_warning_icon_size: 35px;
+//弹出框警告图标大小
+$dialog_colors: #ff6b6b;
+//弹出框颜色
+$dialog_hover_bgcolor: #EA6666;
+//弹出框按钮滑入时颜色
+
+/*对话框外层*/
+
+.Xht_dialog {
+
+}
+
+$btn_height: 40px !default;
+
+/*按钮组件*/
+.Xht_btn {
+  width: 100%;
+  height: $btn_height;
+  text-align: center;
+  margin: 0.5em auto; //按钮的外边距，实际引用视情况而定
+  cursor: pointer;
+  @include border-radius(5px);
+  @include transition(0.5s);
+}
+
+/*搜索按钮*/
+$btn_icon_size: 25px;
+//带有图标的按钮大小
+$search_width: 60px;
+$search_height: 35px;
+
+/*搜索按钮通用样式*/
+%Xht_btn_search {
+  width: $search_width;
+  height: $search_height;
+  @include border-radius(3px);
+}
+
+/*带有图标的搜索按钮*/
+.Xht_btn_search_icon {
+  @extend %Xht_btn_search;
+  background: url("../img/search-icon.png") no-repeat center;
+  background-size: $btn_icon_size;
+}
+
+/*带有文字的搜索按钮*/
+.Xht_btn_search_text {
+  @extend %Xht_btn_search;
+  font-size: 14px;
+}
+
+/*选中按钮*/
+.Xht_btn_correct {
+  background: url("../img/correct-icon.png") no-repeat center;
+  background-size: $btn_icon_size;
+}
+
+/*删除按钮/错误按钮*/
+.Xht_btn_error {
+  background: url("../img/error-icon.png") no-repeat center;
+  background-size: $btn_icon_size;
+}
+
+/*有背景色填充的按钮*/
+@mixin Xht_btn($btn_color) {
+  color: #ffffff;
+  border: 1px solid $btn_color;
+  background-color: $btn_color;
+  &:hover {
+    background-color: darken($btn_color, 5%);
+  }
+}
+
+/*无背景色只有边框的按钮*/
+@mixin Xht_btn_noBgColor($btn_color,$hoverBgColor) {
+  color: #333333;
+  border: 1px solid $btn_color;
+  background-color: #ffffff;
+  @if $hoverBgColor == true {
+    //当$hoverBgColor属性为true时，滑入按钮才有背景色
+    &:hover {
+      background-color: darken($btn_color, 5%);
+      color: #ffffff;
+    }
+  }
+
+}
+
+/*按钮类型*/
+$Xht_btn_types: (
+        blue : #1679ce,
+        red : #ef4f4f,
+        purple : #8b91ff,
+        green : #22bf64,
+        gray : #888888,
+        correct: #22bf64,
+        error: #e8566d
+) !default;
+
+/*循环遍历每种按钮*/
+@each $btn_type, $btn_color in $Xht_btn_types {
+  .Xht_btn_#{$btn_type} {
+    @include Xht_btn($btn_color);
+  }
+  .Xht_btn_border_#{$btn_type} {
+    @include Xht_btn_noBgColor($btn_color, false);
+  }
+}
+
+/*一排两个按钮*/
+.btn_count_two {
+  font-size: 0;
+  .Xht_btn {
+    width: 46%;
+    margin: 0 2%;
+    &:nth-child(1) {
+      float: left;
+    }
+    &:nth-child(2) {
+      float: right;
+    }
+  }
+}
+
+/*一排三个按钮*/
+.btn_count_three {
+  font-size: 0;
+  .Xht_btn {
+    width: 28%;
+    margin: 0 2.5%;
+  }
+}
+
+
+
+/*弹出框*/
+.Xht_dialog {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 60%;
+  padding: 1em 1.5em;
+  background-color: #ffffff;
+  display: none;
+  z-index: 10000;
+  box-shadow: 2px 5px 10px 2px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  @include border-radius(5px);
+
+  /*关闭小图标*/
+  .close_icon {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    display: block;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+    background: url("../img/error-gray-icon.png") no-repeat center;
+  }
+
+  /*弹出框内容*/
+  .Xht_dialog_content {
+    text-align: center;
+    h4 {
+      color: #333333;
+      margin: 13px auto;
+      font-size: 18px;
+    }
+    p {
+      color: #333333;
+      font-size: 13px;
+    }
+    /*按钮*/
+    .Xht_btn {
+      width: 45%;
+      height: 30px;
+      line-height: 30px;
+      margin: 20px 0 12px 0;
+      border-radius: 3px;
+    }
+  }
+}
+
+/*对话框头部*/
+%Xht_dialog_header {
+  padding: 0 12px;
+  background-color: $dialog_colors;
+  p {
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: bold;
+  }
+}
+
+
+/*通知框*/
+.Xht_dialog_inform {
+  padding: 1.8em 1em 1.2em 1em ;
+  .Xht_dialog_content {
+    padding-top: 40px;
+  }
+}
+
+/*循环遍历每个通知框*/
+$dialog_icon_list:success,failed,waiting;
+@each $dialog_icon in $dialog_icon_list {
+  .Xht_dialog_inform.#{$dialog_icon} .Xht_dialog_content {
+    background: url("../img/#{$dialog_icon}-icon.png") no-repeat top center;
+  }
+}
+
+/*遮罩层*/
+.mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5);
+  //filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#19ffffff,endColorstr=#19ffffff);
+  display: none;
+  width: 100%;
+  height: 100%;
+}
+
+
+
+@media screen and (max-width: 330px) {
+  /*弹出框*/
+  .Xht_dialog {
+    width: 65%;
+    .Xht_dialog_content {
+      p {
+        font-size: 12px;
+      }
+    }
+  }
+}
+
+
+
+
+
+

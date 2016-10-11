@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/jquery-1.9.1-min.js"></script>
+    <script src="js/event.js"></script>
+    <title>弹出框</title>
+</head>
+<body>
+
+<input type="button" class="Xht_btn Xht_btn_blue" id="display_dialog_btn" value="点击弹出会话框">
+
+<!--确认框红色-->
+<div class="Xht_dialog Xht_dialog_mobile ">
+    <span class="close_icon"></span>
+    <div class="Xht_dialog_content">
+        <h4>确定取消关注?</h4>
+        <p>取消后，您将看不到该用户的动态</p>
+        <div class="Xht_btn_box btn_count_two">
+            <input type="button" class="Xht_btn Xht_btn_red " value="确认">
+            <input type="button" class="Xht_btn Xht_btn_border_gray" value="取消">
+        </div>
+    </div>
+</div>
+
+<!--确认框蓝色-->
+<div class="Xht_dialog Xht_dialog_mobile ">
+    <span class="close_icon"></span>
+    <div class="Xht_dialog_content">
+        <h4>确定取消关注?</h4>
+        <p>取消后，您将看不到该用户的动态</p>
+        <div class="Xht_btn_box btn_count_two">
+            <input type="button" class="Xht_btn Xht_btn_blue " value="确认">
+            <input type="button" class="Xht_btn Xht_btn_border_gray" value="取消">
+        </div>
+    </div>
+</div>
+
+<!--通知框 成功-->
+<div class="Xht_dialog Xht_dialog_inform success">
+    <span class="close_icon"></span>
+    <div class="Xht_dialog_content">
+        <h4>您的资料提交成功!</h4>
+        <p>工作人员会在24小时内审核</p>
+        <input type="button" class="Xht_btn Xht_btn_border_gray" value="知道了">
+    </div>
+</div>
+
+<!--通知框 等待/提示-->
+<div class="Xht_dialog Xht_dialog_inform waiting">
+    <span class="close_icon"></span>
+    <div class="Xht_dialog_content">
+        <h4>敬请期待!</h4>
+        <p>工作人员会在24小时内审核</p>
+        <input type="button" class="Xht_btn Xht_btn_border_gray" value="知道了">
+    </div>
+</div>
+<!--通知框 失败/错误-->
+<div class="Xht_dialog Xht_dialog_inform failed">
+    <span class="close_icon"></span>
+    <div class="Xht_dialog_content">
+        <h4>消息发送失败!</h4>
+        <p>请先检查网络,尝试再次发送</p>
+        <input type="button" class="Xht_btn Xht_btn_border_gray" value="知道了">
+    </div>
+</div>
+<!--通知框 great-->
+<!--<div class="Xht_dialog Xht_dialog_inform great">
+    <span class="close_icon"></span>
+    <div class="Xht_dialog_content">
+        <h4>GREAT!</h4>
+        <p>please waiting !</p>
+        <input type="button" class="Xht_btn Xht_btn_border_gray" value="知道了">
+    </div>
+</div>-->
+
+
+
+<!--遮罩层-->
+<div class="mask"></div>
+</body>
+</html>
