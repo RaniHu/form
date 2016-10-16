@@ -10,6 +10,68 @@
     <title>radio单选框</title>
 </head>
 <body>
+<!-- 每排一个单选框 且图标在后面-->
+<!-- 注意：label for的值与input的id相同-->
+
+<!-- 每排一个单选框 且图标在后面-->
+<div class="Xht_radio one_row icon_after" >
+    <label for="radio_china" class=" Xht_radio_box" >
+        <input type="radio" id="radio_china" checked="checked" name="country">
+        <span class="radio_icon"></span>
+        <span class="Xht_radio_content">china</span>
+    </label>
+    <label for="radio_canada" class="Xht_radio_box disabled">                  <!--禁止输入-->
+        <input type="radio" id="radio_canada" disabled name="country">
+        <span class="radio_icon"></span>
+        <span class="Xht_radio_content">Canada</span>
+    </label>
+    <label for="radio_india" class="Xht_radio_box">
+        <input type="radio" id="radio_india" name="country">
+        <span class="radio_icon"></span>
+        <span class="Xht_radio_content">India</span>
+    </label>
+
+</div>
+
+<!-- 每排一个单选框 且图标在前面-->
+<div class="Xht_radio  one_row icon_front" >
+    <label for="radio_hubei" class=" Xht_radio_box" >
+        <input type="radio" id="radio_hubei" checked="checked" name="province">
+        <span class="radio_icon"></span>
+        <span class="Xht_radio_content">china</span>
+    </label>
+    <label for="radio_shanghai" class="Xht_radio_box">
+        <input type="radio" id="radio_shanghai" name="province">
+        <span class="radio_icon"></span>
+        <span class="Xht_radio_content">Canada</span>
+    </label>
+    <label for="radio_wuhan" class="Xht_radio_box">
+        <input type="radio" id="radio_wuhan" name="province">
+        <span class="radio_icon"></span>
+        <span class="Xht_radio_content">India</span>
+    </label>
+
+</div>
+
+<!--每排多个单选框 且图标在前面-->
+<div class="Xht_radio icon_front" >
+    <label for="radio_japan" class=" Xht_radio_box" >
+        <input type="radio" id="radio_japan" checked="checked" name="country2">
+        <span class="radio_icon"></span>
+        <span class="Xht_radio_content">japan</span>
+    </label>
+    <label for="radio_England" class="Xht_radio_box">
+        <input type="radio" id="radio_England" name="country2">
+        <span class="radio_icon"></span>
+        <span class="Xht_radio_content">Canada</span>
+    </label>
+    <label for="radio_korea" class="Xht_radio_box">
+        <input type="radio" id="radio_korea" name="country2">
+        <span class="radio_icon"></span>
+        <span class="Xht_radio_content">korea</span>
+    </label>
+
+</div>
 
 </body>
 </html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>表单验证</title>
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/validate.css">
+    <script src="../js/jquery-1.9.1-min.js"></script>
+    <script src="../js/event.js"></script>
+</head>
+
+<body>
+<div class="wrapper">
+        <!-- 注册表单-->
+        <form  id="registerForm" onsubmit="return checkForm()" action="/startregister/" method="post">
+            <div class="register-box">
+                <h1>用户注册</h1>
+                <!-- 错误提示-->
+                <div class="msg">
+                    <img class="msg-icon" src="">
+                    <p class="msgTxt"></p>
+                </div>
+                <!-- 表单具体内容-->
+                <ul class="input-filed">
+                    <li class="real-name">
+                        <label>真实姓名</label>
+                        <input type="text" name="realName" id="name">
+                        <img class="correct-icon">
+
+                    </li>
+                    <li class="email">
+                        <label>邮箱</label>
+                        <input type="text" name="email" id="email">
+                        <img class="correct-icon">
+                    </li>
+                    <li class="password">
+                        <label>密码</label>
+                        <input type="password" name="pwd1" id="pwd1">
+                        <img class="correct-icon">
+                    </li>
+                    <li class="password">
+                        <label>确认密码</label>
+                        <input type="password" name="pwd2" id="pwd2">
+                        <img class="correct-icon">
+                    </li>
+                </ul>
+                <div class="go-login">
+                    已有账号?
+                    <a href="/login/">直接登录</a>
+                </div>
+                <button type="submit" class="register-btn">立即注册</button>
+            </div>
+        </form>
+</div>
+
+</body>
+</html>

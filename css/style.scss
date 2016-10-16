@@ -255,6 +255,7 @@ $btn_height: 40px !default;
   text-align: center;
   margin: 0.5em auto; //按钮的外边距，实际引用视情况而定
   cursor: pointer;
+  font-size: 14px;
   @include border-radius(5px);
   @include transition(0.5s);
 }
@@ -367,32 +368,30 @@ $Xht_btn_types: (
   }
 }
 
-
-
 /*弹出框*/
 .Xht_dialog {
   position: absolute;
   top: 0;
   left: 0;
-  width: 60%;
-  padding: 1em 1.5em;
+  width: 85%;
+  padding: 1em 0.7em 0.3em 0.7em;
   background-color: #ffffff;
   display: none;
   z-index: 10000;
   box-shadow: 2px 5px 10px 2px rgba(0, 0, 0, 0.2);
-  overflow: hidden;
   @include border-radius(5px);
 
   /*关闭小图标*/
   .close_icon {
     position: absolute;
-    width: 30px;
-    height: 30px;
+    width: 25px;
+    height: 25px;
     display: block;
-    top: 0;
-    right: 0;
+    top: -25px;
+    right: -25px;
     cursor: pointer;
-    background: url("../img/error-gray-icon.png") no-repeat center;
+    background: url("../img/close-icon.png") no-repeat center;
+    z-index: 10000;
   }
 
   /*弹出框内容*/
@@ -404,16 +403,15 @@ $Xht_btn_types: (
       font-size: 18px;
     }
     p {
-      color: #333333;
+      color: #555555;
       font-size: 13px;
     }
     /*按钮*/
     .Xht_btn {
-      width: 45%;
-      height: 30px;
+      width: 48%;
+      height: 38px;
       line-height: 30px;
-      margin: 20px 0 12px 0;
-      border-radius: 3px;
+      margin: 20px 0 10px 0;
     }
   }
 }
@@ -429,20 +427,530 @@ $Xht_btn_types: (
   }
 }
 
-
 /*通知框*/
 .Xht_dialog_inform {
-  padding: 1.8em 1em 1.2em 1em ;
+  width: 75%;
+  padding: 0;
   .Xht_dialog_content {
     padding-top: 40px;
+    margin: 1.8em 0;
+  }
+  .Xht_btn {
+    background-color: transparent;
+    border-top: 1px solid #dddddd;
+    margin: 0;
+    @include border-radius(0);
+  }
+}
+
+/*等待框*/
+@-webkit-keyframes loading {
+  50% {
+    @include transform(scale(0.6));
+    @include opacity(0.4);
+  }
+  100% {
+    @include transform(scale(1));
+    @include opacity(1);
+  }
+}
+
+%Xht_dialog_waiting {
+  width: 60%;
+  padding: 1.5em 0;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.8);
+  color: #ffffff;
+}
+
+.Xht_dialog_inform.waiting {
+  @extend %Xht_dialog_waiting;
+  span.loading {
+    position: relative;
+    display: block;
+    width: 50px;
+    height: 50px;
+    margin: 0 auto;
+    i {
+      position: absolute;
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: #dddddd;
+      &:nth-child(1) {
+        top: 0;
+        left: 25px;
+
+        @include animation(loading 1s ease-in 0s infinite)
+      }
+      &:nth-child(2) {
+        top: 6px;
+        left: 12px;
+        @include animation(loading 1s ease-in -0.12s infinite)
+      }
+      &:nth-child(3) {
+        top: 18px;
+        left: 7px;
+        @include animation(loading 1s ease-in -0.24s infinite)
+      }
+      &:nth-child(4) {
+        top: 32px;
+        left: 12px;
+        @include animation(loading 1s ease-in -0.36s infinite)
+      }
+      &:nth-child(5) {
+        top: 36px;
+        left: 25px;
+        @include animation(loading 1s ease-in -0.48s infinite)
+      }
+      &:nth-child(6) {
+        top: 32px;
+        left: 40px;
+        @include animation(loading 1s ease-in -0.6s infinite)
+      }
+      &:nth-child(7) {
+        top: 19px;
+        left: 47px;
+        @include animation(loading 1s ease-in -0.72s infinite)
+      }
+      &:nth-child(8) {
+        top: 7px;
+        left: 40px;
+        @include animation(loading 1s ease-in -0.84s infinite)
+      }
+    }
+  }
+
+  p {
+    font-size: 13px;
+    margin-top: 6px;
+  }
+}
+
+.Xht_dialog.waiting_over {
+  display: none;
+  @extend %Xht_dialog_waiting;
+  img {
+    width: 40px;
+    height: 40px;
+  }
+  p {
+    margin-top: 12px;
+    font-size: 13px;
   }
 }
 
 /*循环遍历每个通知框*/
-$dialog_icon_list:success,failed,waiting;
+$dialog_icon_list: success, failed, notice;
 @each $dialog_icon in $dialog_icon_list {
   .Xht_dialog_inform.#{$dialog_icon} .Xht_dialog_content {
     background: url("../img/#{$dialog_icon}-icon.png") no-repeat top center;
+  }
+}
+
+/*tab选项卡*/
+.Xht_tabs {
+  width: 99%; //宽度根据实际情况更改
+  margin: 10px auto;
+  /*选项卡菜单*/
+  ul.Xht_tabs_menu {
+    width: 100%;
+    text-align: center;
+    font-size: 0;
+    margin: 0 auto;
+    @include border-radius(3px);
+    li {
+      //width: 20%;
+      display: inline-block;
+
+      a {
+        display: block;
+        padding: 10px 0; //内边框根据实际情况更改
+        font-size: 14px;
+        cursor: pointer;
+
+      }
+    }
+  }
+  /*选项卡内容*/
+  $Xht_tabs_content_height: 300px; //默认高度，可根据实际情况更改
+  .Xht_tabs_content {
+    width: 100%;
+    position: relative;
+    height: $Xht_tabs_content_height;
+    overflow: hidden;
+    .content_detail {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: $Xht_tabs_content_height;
+      display: none;
+    }
+  }
+}
+
+/*下边框类型*/
+$Xht_tabs_underline: (
+        black: #2d2f35,
+        blue : #1679ce,
+        red : #ef4f4f,
+        purple : #8b91ff,
+        green : #22bf64,
+        gray : #888888,
+) !default;
+@each $underline_type, $underline_color in $Xht_tabs_underline {
+  .Xht_tabs.Xht_tabs_underline_#{$underline_type} {
+    .Xht_tabs_menu li a.active {
+      /*当前选中的选项卡下边框颜色*/
+      border-bottom: 2px solid $underline_color;
+    }
+  }
+}
+
+/*选项卡类型*/
+$Xht_tabs_types: (
+        black: #2d2f35,
+        blue : #1679ce,
+        red : #ef4f4f,
+        purple : #8b91ff,
+        green : #4cd964,
+        gray : #888888,
+        light_green:#66ccce,
+        white: #ffffff,
+) !default;
+
+/*循环遍历每种选项卡*/
+@each $tabs_type, $tabs_color in $Xht_tabs_types {
+  .Xht_tabs_#{$tabs_type}_all .Xht_tabs_menu {
+    /*每个选项都有背景色的*/
+    background-color: $tabs_color;
+    li a {
+      color: #ffffff;
+    }
+  }
+  /* 如果每个选项为白色背景,则增加灰色边框*/
+  @if $tabs_type==white {
+    .Xht_tabs_#{$tabs_type}_all .Xht_tabs_menu {
+      border: 1px solid #dddddd;
+      border-left: none;
+      li a {
+        color: #333333;
+        border-left: 1px solid #dddddd;
+      }
+    }
+  }
+  /*只有当前选中项有背景色的ul边框色*/
+  .Xht_tabs_#{$tabs_type}_active ul {
+    border: 1px solid $tabs_color;
+    border-left: none;
+    li {
+      a {
+        color: $tabs_color;
+        border-left: 1px solid $tabs_color;
+      }
+    }
+    a.active {
+      background-color: $tabs_color;
+      color: #ffffff;
+    }
+  }
+  .Xht_switch_#{$tabs_type}.Xht_switch_on {
+    background-color: $tabs_color;
+  }
+
+}
+
+/*面板*/
+.Xht_panel {
+  width: 100%;
+  ul {
+    li {
+      position: relative;
+      height: 40px;
+      line-height: 40px;
+      padding: 0 10px;
+      background-color: #f0f4f5;
+      color: #555555;
+      border-bottom: 1px solid #dddddd;
+    }
+  }
+}
+
+/*单选框*/
+$Xht_radio_color: #66ccce #3498DB #E74C3C #2ECC71 #bdc3c7;
+//单选框备用颜色  青色、蓝色、红色、绿色、灰色
+$Xht_radio_size: 14px;
+$Xht_radio_checked_size: 6px;
+$Xht_checkbox_width: 14px;
+$Xht_checkbox_height: 14px;
+.Xht_radio, .Xht_checkbox {
+  /*单选框禁止输入时*/
+  .Xht_radio_box.disabled, .Xht_checkbox_box.disabled .Xht_radio_content {
+    color: nth($Xht_radio_color, 5);
+  }
+  /*每个单选框*/
+  .Xht_radio_box, .Xht_checkbox_box {
+    display: inline-block;
+    padding: 0.2em 1em;
+    color: #34495e;
+    /*当输入框为单选框和多选框时*/
+    input[type='radio'], input[type='checkbox'] {
+      @include appearance(none);
+      visibility: hidden;
+    }
+    /*单选图标*/
+    .radio_icon, .checkbox_icon {
+      position: relative;
+      display: inline-block;
+      width: $Xht_radio_size;
+      height: $Xht_radio_size;
+      border: 3px solid #dddddd;
+      margin-top: 1px;
+    }
+    /*当前已选择的项图标*/
+    input:checked + .radio_icon {
+      border-width: 3px;
+      border-style: solid;
+      border-color: nth($Xht_radio_color, 2); //后面数字代表$Xht_radio_color变量中第几个
+    }
+
+    /*单选项内容*/
+    .Xht_radio_content {
+      float: left;
+      font-size: 14px;
+    }
+  }
+
+  /*单选框的图标样式*/
+  .Xht_radio_box {
+    input:checked + .radio_icon:before {
+      content: '';
+      display: block;
+      position: absolute;
+      width: $Xht_radio_checked_size;
+      height: $Xht_radio_checked_size;
+      top: ($Xht_radio_size - $Xht_radio_checked_size)/2;
+      left: ($Xht_radio_size - $Xht_radio_checked_size)/2;
+      @include border-radius(50%);
+      background-color: nth($Xht_radio_color, 2); //后面数字代表$Xht_radio_color变量中第几个
+    }
+  ;
+    .radio_icon {
+      @include border-radius(50%);
+    }
+  ;
+  }
+  /*复选框的图标样式*/
+  .Xht_checkbox_box {
+    input:checked + .checkbox_icon {
+      background-color: nth($Xht_radio_color, 3);
+      border: 3px solid nth($Xht_radio_color, 3);
+    }
+    input:checked + .checkbox_icon:before {
+      content: '';
+      display: block;
+      position: absolute;
+      width: $Xht_checkbox_width;
+      height: $Xht_checkbox_height;
+      background: url("../img/correct-icon.png") no-repeat center;
+      background-size: 12px;
+    }
+  ;
+    .checkbox_icon {
+      @include border-radius(3px);
+    }
+  }
+}
+
+/*一排一个选项*/
+.one_row .Xht_radio_box, .one_row .Xht_checkbox_box {
+  display: block;
+  margin: 0.5em 0;
+}
+
+/*图标在后面*/
+.icon_after .Xht_radio_box .radio_icon, .icon_after .Xht_checkbox_box .checkbox_icon {
+  float: right;
+}
+
+/*图标在前面*/
+.icon_front .Xht_radio_box, .icon_front .Xht_checkbox_box {
+  .radio_icon, .checkbox_icon {
+    float: left;
+  }
+  .Xht_radio_content {
+    padding-left: 1.2em;
+  }
+}
+
+/*开关*/
+.Xht_switch {
+  position: relative;
+  display: block;
+  font-size: 0;
+  width: 50px;
+  height: 26px;
+  line-height: 26px;
+  text-align: center;
+  cursor: pointer;
+  @include border-radius(15px);
+  /*圆圈按钮*/
+  i {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    background-color: #ffffff;
+    @include border-radius(50%);
+  }
+}
+
+/*默认为关闭图标*/
+.Xht_switch.switch_close_default {
+  text-align: left;
+}
+
+/*关闭图标*/
+.Xht_switch_close {
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  i {
+    float: none;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, .4);
+  }
+}
+
+/*打开图标*/
+.Xht_switch_on {
+  background-color: #4cd964;
+  color: #ffffff;
+  border: 1px solid #eeeeee;
+  i {
+    float: right;
+    margin-right: 2px;
+    margin-top: 1px;
+  }
+}
+
+/*底部菜单*/
+.Xht_bottom_menu {
+  position: fixed;
+  margin: 0 auto;
+  z-index: 10000;
+  li {
+    display: block;
+    text-align: center;
+    background-color: #ffffff;
+    font-size: 18px;
+    @include border-radius(8px);
+    .delete {
+      color: #fc4c31;
+    }
+    .describe {
+      height: 40px;
+      line-height: 40px;
+      color: #dddddd;
+      font-size: 14px;
+      border-bottom: 1px solid #dddddd;
+    }
+    a {
+      display: block;
+      height: 50px;
+      line-height: 50px;
+      color: #1C89FF;
+    }
+  }
+}
+
+.bottom_menu_default {
+  width: 92%;
+  left: 3%;
+  right: 3%;
+  bottom: -150px;
+  li.cancel {
+    margin: 8px 0;
+  }
+}
+
+.bottom_menu_whole_line {
+  width: 100%;
+  bottom: -255px;
+  left: 0;
+  right: 0;
+  li {
+    @include border-radius(0);
+    &.cancel {
+      margin-top: 5px;
+    }
+    a {
+      color: #333333;
+    }
+  }
+}
+
+/*侧滑菜单*/
+.Xht_side_menu_box{
+  width: 100%;
+  overflow: hidden;
+}
+.Xht_side_menu {
+  float: left;
+  background: #292b3a;
+  .user_info {
+    padding: 30px 0 15px 0;
+    text-align: center;
+    img {
+      @include border-radius(50%);
+      width: 100px;
+      height: 100px;
+    }
+    h1 {
+      font-size: 18px;
+      color: #dddddd;
+    }
+  }
+
+  ul {
+    li {
+      padding-left: 20px;
+
+      a {
+        display: block;
+        height: 55px;
+        line-height: 55px;
+        color: #dddddd;
+        padding-left: 40px;
+        border-bottom: 1px solid #eeeeee;
+        background: url("../img/home_icon.png") no-repeat left center;
+        background-size: 25px;
+      }
+    }
+  }
+}
+
+.Xht_side_menu_wrapper {
+  width: 4000px;
+  margin-left: -80%;
+  .main {
+    float: left;
+    .header {
+      height: 40px;
+      background: #146bb7;
+      i.open_icon {
+        display: block;
+        width: 30px;
+        height: 30px;
+        background: url("../img/open_icon.png") no-repeat left center;
+        padding-top: 10px;
+
+      }
+    }
+    .content{
+      width: 100%;
+      height: 600px;
+      background-color: #eeeeee;
+    }
   }
 }
 
@@ -451,26 +959,14 @@ $dialog_icon_list:success,failed,waiting;
   position: absolute;
   top: 0;
   left: 0;
-  background: rgba(0, 0, 0, 0.5);
-  //filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#19ffffff,endColorstr=#19ffffff);
-  display: none;
+  background: rgba(0, 0, 0, 0.4);
+  //display: none;
   width: 100%;
   height: 100%;
+  z-index: 9999;
 }
 
 
-
-@media screen and (max-width: 330px) {
-  /*弹出框*/
-  .Xht_dialog {
-    width: 65%;
-    .Xht_dialog_content {
-      p {
-        font-size: 12px;
-      }
-    }
-  }
-}
 
 
 

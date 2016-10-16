@@ -62,3 +62,8 @@
   -o-text-size-adjust: $box-shadow;
   text-size-adjust: $box-shadow;
 }
+
+@mixin appearance($appearance){
+  -moz-appearance: $appearance;
+  -webkit-appearance: $appearance;
+}

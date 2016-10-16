@@ -2,16 +2,73 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/style.css">
     <script src="js/jquery-1.9.1-min.js"></script>
     <script src="js/event.js"></script>
-    <title>input输入框</title>
-    <title></title>
+    <title>复选框</title>
 </head>
 <body>
+<!-- 注意：label for的值与input的id相同-->
+<!--每排多个复选框 且图标在前面-->
+<div class="Xht_checkbox icon_front" >
+    <label for="checkbox_japan" class="Xht_checkbox_box" >
+        <input type="checkbox" id="checkbox_japan" checked="checked"  >
+        <span class="checkbox_icon"></span>
+        <span class="Xht_radio_content">japan</span>
+    </label>
+    <label for="checkbox_England" class="Xht_checkbox_box disabled">
+        <input type="checkbox" id="checkbox_England" disabled >
+        <span class="checkbox_icon"></span>
+        <span class="Xht_radio_content">Canada</span>
+    </label>
+    <label for="checkbox_korea" class="Xht_checkbox_box">
+        <input type="checkbox" id="checkbox_korea" >
+        <span class="checkbox_icon"></span>
+        <span class="Xht_radio_content">korea</span>
+    </label>
+
+</div>
+
+<!-- 每排一个复选框 且图标在后面-->
+<div class="Xht_checkbox one_row icon_after" >
+    <label for="checkbox_china" class="Xht_checkbox_box" >
+        <input type="checkbox" id="checkbox_china" checked="checked"  >
+        <span class="checkbox_icon"></span>
+        <span class="Xht_radio_content">japan</span>
+    </label>
+    <label for="checkbox_America" class="Xht_checkbox_box disabled">
+        <input type="checkbox" id="checkbox_America" disabled >
+        <span class="checkbox_icon"></span>
+        <span class="Xht_radio_content">Canada</span>
+    </label>
+    <label for="checkbox_india" class="Xht_checkbox_box">
+        <input type="checkbox" id="checkbox_india" >
+        <span class="checkbox_icon"></span>
+        <span class="Xht_radio_content">korea</span>
+    </label>
+
+</div>
+
+<!-- 每排一个复选框 且图标在前面-->
+<div class="Xht_checkbox  one_row icon_front" >
+    <label for="checkbox_hubei" class=" Xht_checkbox_box" >
+        <input type="checkbox" id="checkbox_hubei" checked="checked">
+        <span class="checkbox_icon"></span>
+        <span class="Xht_radio_content">china</span>
+    </label>
+    <label for="checkbox_shanghai" class="Xht_checkbox_box">
+        <input type="checkbox" id="checkbox_shanghai">
+        <span class="checkbox_icon"></span>
+        <span class="Xht_radio_content">Canada</span>
+    </label>
+    <label for="checkbox_wuhan" class="Xht_checkbox_box">
+        <input type="checkbox" id="checkbox_wuhan">
+        <span class="checkbox_icon"></span>
+        <span class="Xht_radio_content">India</span>
+    </label>
+</div>
 
 </body>
 </html>
